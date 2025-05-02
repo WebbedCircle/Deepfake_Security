@@ -1,0 +1,35 @@
+# STEP 1: AES Encryption Utility (for encrypting/decrypting uploaded files and results)
+# Purpose: Secure uploaded media files and analysis results
+
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+import base64
+import os
+
+def pad(data):
+    padding = 16 - len(data) % 16
+    return data + bytes([padding]) * padding
+
+def unpad(data):
+    padding = data[-1]
+    return data[:-padding]
+
+def encrypt_file(file_bytes, key):
+    iv = get_random_bytes(16)
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    encrypted = cipher.encrypt(pad(file_bytes))
+    return base64.b64encode(iv + encrypted)
+
+def decrypt_file(enc_data, key):
+    raw = base64.b64decode(enc_data)
+    iv = raw[:16]
+    encrypted = raw[16:]
+    cipher = AES.new(key, AES.MODE_CBC, iv)
+    return unpad(cipher.decrypt(encrypted))
+
+# How to use:
+# key = get_random_bytes(16)  # store this securely (e.g., environment variable)
+# encrypted = encrypt_file(file_bytes, key)
+# decrypted = decrypt_file(encrypted, key)
+
+# === Duty Fulfilled: "Encrypt uploaded files and results (AES)" ===
