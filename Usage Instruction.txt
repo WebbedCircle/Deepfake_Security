@@ -1,0 +1,17 @@
+# --- USAGE INSTRUCTIONS ---
+1. Place all files in the right folders:
+   - Python modules in `app/`
+   - HTML files in `templates/`
+   - Main script as `run.py`
+
+2. Run locally:
+   ```bash
+   pip install -r requirements.txt
+   python run.py
+   ```
+
+3. Build Docker image:
+   ```bash
+   docker build -t deepfake-secure .
+   docker run -p 5000:5000 deepfake-secure
+   ```

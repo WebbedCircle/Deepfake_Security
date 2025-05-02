@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+</head>
+<body>
+    <h2>Deepfake Detection Results</h2>
+    <p><strong>Filename:</strong> {{ filename }}</p>
+    <p><strong>Encrypted Path:</strong> {{ encrypted_path }}</p>
+    <p><strong>Confidence Score:</strong> {{ confidence_score }}</p>
+    <p><strong>Is Deepfake:</strong> {{ is_deepfake }}</p>
+    <a href="{{ url_for('upload') }}">Back to Upload</a>
+</body>
+</html>

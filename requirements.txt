@@ -1,0 +1,4 @@
+# --- FILE: requirements.txt ---
+flask
+flask-login
+pycryptodome

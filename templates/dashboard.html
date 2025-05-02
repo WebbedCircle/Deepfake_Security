@@ -1,0 +1,15 @@
+# --- FILE: templates/dashboard.html ---
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+  <h2>Welcome, {{ user.username }} ({{ user.role }})</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    Upload Media: <input type="file" name="media">
+    <input type="submit" value="Upload">
+  </form>
+  <form action="/logout" method="get">
+    <input type="submit" value="Logout">
+  </form>
+</body>
+</html>
